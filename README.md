@@ -2,6 +2,21 @@
 
 이미 만들어 둔 **OpenClaw 에이전트를 슬랙에 연결**하는 Claude Code / Codex 스킬입니다.
 
+## 빠른 시작
+
+OpenClaw가 돌아가는 컴퓨터에서 한 번 설치합니다.
+
+```bash
+# Claude Code
+git clone https://github.com/sochun76/openclaw-slack-connect.git ~/.claude/skills/openclaw-slack-connect
+# Codex
+git clone https://github.com/sochun76/openclaw-slack-connect.git ~/.codex/skills/openclaw-slack-connect
+```
+
+그다음 Claude Code(또는 Codex)에게 **"내 봇을 슬랙에 연결해줘"** 라고 말하면 한 단계씩 안내합니다. 에이전트가 서버나 다른 컴퓨터에 있어도 되고, 어사이드는 필요 없습니다.
+
+## 왜 만들었나
+
 에이전트를 설치하고 페르소나까지 만들었는데, 그 에이전트를 슬랙에 넣는 단계에서 막히는 경우가 많습니다. 특히 에이전트가 노트북이 아니라 **서버에 있을 때** 그렇습니다. 이 스킬은 그 과정을 "사람은 슬랙 웹 화면만, 나머지는 에이전트가" 하도록 나눠서 한 단계씩 안내합니다. 어사이드 같은 브라우저 자동화 도구가 필요 없습니다.
 
 ## 하는 일
