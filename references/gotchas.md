@@ -12,3 +12,4 @@
 8. **열쇠를 채팅이나 화면 캡처에 노출하면** 대화 기록에 남는다. 연결 후 앱 열쇠는 Basic Information에서 새로 만들고, 봇 열쇠는 OAuth & Permissions에서 Revoke 후 다시 설치해 받은 뒤 `save_tokens.py`로 다시 저장한다.
 9. **슬랙 화면 함정:** "Create new app" 창의 기본 선택은 "AI agent" 템플릿이다. 반드시 **From a manifest**. 설계도 칸의 "Demo App" 예시는 전부 지운다. `xoxb`와 `xapp`를 바꿔 넣거나 한 줄에 이어 붙이는 실수가 잦다(save_tokens.py가 앞머리로 구분한다). 앱 열쇠는 자동으로 생기지 않으니 App-Level Tokens에서 직접 만든다.
 10. **외부 워크스페이스에서 다른 봇과 협업할 때** 채널의 `users` 허용 목록을 주인만으로 두면 다른 봇의 호출도 무시된다. 협업 실습 때만 잠깐 넓히고, 그 에이전트가 할 수 있는 일(셸, 파일, 외부 발송)을 먼저 좁혀 둔다.
+11. **에이전트가 서버 전체 플러그인을 설치할 수 있다.** OpenClaw의 `plugins` 도구(MCP)로 에이전트가 플러그인을 설치·켜기 할 수 있었다(실측: 실습 에이전트가 공식 에어테이블 플러그인을 설치). 플러그인은 모든 에이전트에 적용되니, PreToolUse 훅 등으로 `install/enable/disable/uninstall`을 막고 사람이 설치한다. 같은 이유로 "웹 금지" 에이전트는 Claude 내장 `WebFetch`뿐 아니라 OpenClaw 쪽 `web_fetch`, `browser` 도구도 막아야 한다.
