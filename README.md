@@ -1,6 +1,6 @@
 # openclaw-slack-connect
 
-이미 만들어 둔 **OpenClaw 에이전트를 슬랙에 연결**하는 Claude Code / Codex 스킬입니다.
+**OpenClaw 에이전트를 슬랙에서 쓰기까지** 한 번에 안내하는 Claude Code / Codex 스킬입니다. 에이전트 만들기, 모델 고르기, 페르소나 적용, 슬랙 연결까지 필요한 단계만 골라서 할 수 있습니다.
 
 ## 빠른 시작
 
@@ -21,13 +21,17 @@ git clone https://github.com/sochun76/openclaw-slack-connect.git ~/.codex/skills
 
 ## 하는 일
 
-1. 한글 봇 이름이 실제로 반영되는 슬랙 앱 설계도(매니페스트) 생성
-2. 열쇠(xoxb, xapp)를 화면에 보이지 않게 저장하고 검증 (봇 이름이 한글로 반영됐는지까지 확인)
-3. OpenClaw에 슬랙 계정과 연결 규칙 추가. 처음엔 잠긴 상태로 시작하고, 사람별 대화 분리와 봇끼리 폭주 방지 규칙을 넣음
-4. 게이트웨이 재시작과 연결 확인 (macOS, Linux, Windows WSL)
-5. 주인 승인과 공개 범위 설정 (나만 / 직원 모두)
+0. 진행 언어 선택 (한국어 / English)
+1. 에이전트 고르기 또는 새로 만들기
+2. 모델(Opus, Sonnet 등)과 실행 방식 고르기: Claude Code 구독 / API 키. Claude Code 버전도 확인
+3. 페르소나 적용: IDENTITY·SOUL 같은 파일이나 채용설계서를 주면 OpenClaw 파일로 나눠 적용(적용 전 자동 백업). 자료가 없으면 인터뷰로 만듦
+4. 한글 봇 이름이 실제로 반영되는 슬랙 앱 설계도 생성
+5. 열쇠(xoxb, xapp)를 화면에 보이지 않게 저장하고 검증 (봇 이름이 반영됐는지까지 확인)
+6. OpenClaw에 슬랙 계정과 연결 규칙 추가. 처음엔 잠긴 상태로 시작하고, 사람별 대화 분리와 봇끼리 폭주 방지 규칙을 넣음
+7. 게이트웨이 재시작과 연결 확인 (macOS, Linux, Windows WSL)
+8. 주인 승인과 공개 범위 설정 (나만 / 직원 모두)
 
-실제로 겪은 함정 10가지를 [`references/gotchas.md`](references/gotchas.md)에 정리했습니다. 예: 슬랙 봇 이름이 영어로 나오는 문제, 설정이 반영되지 않는 문제, 여러 사람에게 열 때의 보안.
+실제로 겪은 함정 10가지를 [`references/gotchas.md`](references/gotchas.md)에, 페르소나 자료를 파일로 나누는 규칙을 [`references/persona-mapping.md`](references/persona-mapping.md)에 정리했습니다. 예: 슬랙 봇 이름이 영어로 나오는 문제, 설정이 반영되지 않는 문제, 여러 사람에게 열 때의 보안.
 
 ## 설치
 
@@ -43,7 +47,9 @@ git clone https://github.com/sochun76/openclaw-slack-connect.git ~/.claude/skill
 git clone https://github.com/sochun76/openclaw-slack-connect.git ~/.codex/skills/openclaw-slack-connect
 ```
 
-필요한 것: Python 3, 인터넷 연결, `openclaw` CLI, 슬랙 워크스페이스에 앱을 설치할 권한.
+필요한 것: Python 3, 인터넷 연결, `openclaw` CLI, 슬랙 워크스페이스에 앱을 설치할 권한. 구독 방식으로 돌리려면 Claude Code 로그인.
+
+그 컴퓨터만의 사정(보안 장치, 이미 연결된 채널 등)은 `references/local.md`에 적어 두면 스킬이 먼저 읽습니다. 이 파일은 저장소에 올리지 마세요(.gitignore에 포함).
 
 ## 사용
 
@@ -52,6 +58,8 @@ Claude Code(또는 Codex)에게 말로 요청하면 됩니다.
 - "내 봇을 회사 슬랙에 연결해줘"
 - "tori 에이전트를 교육 슬랙에도 등록해줘"
 - "슬랙 봇 이름이 영어로 나와"
+- "새 에이전트 만들어서 이 페르소나 파일 적용하고 슬랙에 넣어줘"
+- "토리 모델을 Sonnet으로 바꿔줘"
 
 Claude Code에서는 `/openclaw-slack-connect`로 직접 부를 수도 있습니다.
 
